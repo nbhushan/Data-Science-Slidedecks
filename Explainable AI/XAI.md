@@ -313,5 +313,3 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 ## **THANK YOU!**
 
 [.footer: [@nbhushan](https://github.com/nbhushan)]
-
-
