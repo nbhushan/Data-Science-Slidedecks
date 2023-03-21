@@ -308,10 +308,10 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 ---
 
-# [fit] YOU CAN CHOOSE TO GO DEEPER INTO THESE TOPICS IN YEARS 3 & 4
+# [fit] YOU CAN CHOOSE TO GO DEEPER IN A TOPIC OF YOUR CHOICE
 
-## THANK YOU!
+## **THANK YOU!**
 
 [.footer: [@nbhushan](https://github.com/nbhushan)]
 
----
+
