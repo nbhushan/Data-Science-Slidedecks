@@ -82,13 +82,13 @@ human in nature, refers to ignorance
 
 ![right fit filtered](images/chatgpt.png)
 
-If we train a classifier on digits [0,8], what happens when we run..?
+if we train a classifier on digits [0,8], what happens when we run..?
 
 - model.predict([2])
 - model.predict([7])
 - model.predict([9])
 
-:exclamation: Never forget that the models you build are probabilistic in nature
+:exclamation:never forget that the models you build are probabilistic in nature
 
 ---
 
