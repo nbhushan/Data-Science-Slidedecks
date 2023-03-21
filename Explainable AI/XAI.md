@@ -12,14 +12,14 @@ slide-transition: true
 
 # [fit] THIS PRESENTATION IS ABOUT
 
-- a recap of this week
+- taxonomy 
 - model (un)certainty
 - gradCAMs
 - the Nigerian prince.
 
 ---
 
-# [fit] TAXONOMY
+# [fit] TAXONOMY OF XAI
 
 ![right filtered fit](images/txt.png)
 
@@ -32,6 +32,22 @@ slide-transition: true
   - model-specific vs model-agnostic
 
 > classify gradCAM according to the taxonomy
+
+---
+
+# [fit] TAXONOMY OF XAI
+
+![right fit](images/txt.png)
+
+- **by default**
+    1. linear models
+    2. tree-based models
+
+- **XAI**
+  - global vs **local** methods
+  - **model-specific** vs model-agnostic
+
+> gradCAM is a local, model-specific method to explain the predictions of a CNN
 
 ---
 
@@ -80,7 +96,7 @@ human in nature, refers to ignorance
 
 # [fit] HOW IS THIS USEFUL?
 
-![right fit filtered](images/chatgpt.png)
+![right fit filtered](images/mnisttwo.png)
 
 if we train a classifier on digits [0,8], what happens when we run..?
 
@@ -88,13 +104,25 @@ if we train a classifier on digits [0,8], what happens when we run..?
 - model.predict([7])
 - model.predict([9])
 
-:exclamation:never forget that the models you build are probabilistic in nature
+> :exclamation: **never forget that the models you build are probabilistic in nature**
+
+---
+
+[.build-lists: true]
+
+# [fit] HOW IS THIS USEFUL?
+
+![right fit](images/chatgpt.png)
+
+## even the best models can be wrong, and with horrible consequences
+
+> quantify the uncertainty of your model: a hot research topic in AI
 
 ---
 
 # [fit] :taxi:
 
-## `May occasionally kill passengers`
+## `may occasionally kill passengers`
 
 ---
 
@@ -104,29 +132,51 @@ if we train a classifier on digits [0,8], what happens when we run..?
 
 :warning: **neural networks tend to be overconfident when being completely wrong**
 
-think self-driving cars, medical diagnosis,
+> think self-driving cars, medical diagnosis,
 [or exploding rockets](https://www.youtube.com/watch?v=bvim4rsNHkQ)
 
 ## :raising_hand: XAI
 
 ---
 
-# EXPLAINING NEURAL NETWORKS
+# EXPLAINING DEEP NEURAL NETWORKS
 
 ---
 
-# GradCAM
+# [fit] EXPLAINING DEEP NEURAL NETWORKS
 
-:bell: gradCAM is a technique for visualizing the activations of a **CNN layer** by producing a heatmap that highlights the regions of an **input image** that are most relevant **to a particular output class.**
+[.column]
 
+## feature visualization
+
+> visualize the activations of a deep neural network
+
+[.column]
+
+## feature attribution
+
+> visualize the features that contribute strongly to the activations of CNN layers for a given input image and class label.
+
+[.column]
+
+## adversarial examples
+
+> understand the robustness of a deep neural network by generating adversarial examples giving insight into the decision boundaries of the model.
+
+---
+
+# [fit] GradCAM
+
+:bell: gradCAM is a feature attribution technique which visualizes the activations of a **CNN layer** by producing a heatmap that highlights the regions of an **input image** that are most relevant **to a particular output class.**
 
 - helps to understand how a CNN works
 - can be used to debug a CNN
-- **can be used to create visual explanations for the predictions made by a CNN**
+
+> can be used to create visual explanations for the predictions made by a CNN
 
 ---
 
-# HOW DOES GRADCAM WORK?
+# [fit] HOW DOES GRADCAM WORK?
 
 ![left fit](images/softmax.png)
 
@@ -136,7 +186,7 @@ gradCAM works by computing the gradients of the output class score with respect 
 
 ---
 
-# TF_EXPLAIN
+# [fit] TF_EXPLAIN
 
 [.column]
 [.code-highlight: all]
@@ -187,7 +237,7 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 ---
 
-# TF_EXPLAIN
+# [fit] TF_EXPLAIN
 
 [.column]
 [.code-highlight: 1, 8-10, 26-35]
@@ -238,7 +288,7 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 ---
 
-# SOURCE CODE
+# [fit] SOURCE CODE
 
 ![left filtered](images/tf-explain_source.png)
 
@@ -251,7 +301,7 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 - [x] occlusion sensitivity
 - [x] activations visualization
 
-**this is an active area of research, so expect more methods to be added in the future**
+> this is an active area of research, so expect more methods to be added in the future
 
 ---
 
@@ -278,14 +328,14 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 - Using **complete knowledge** of the model architecture, it's sources of uncertainty, it's parameters, and the training data, we can intentionally introduce adversarial examples to the model to test the robustness and reliability of the model. **adversarial training**. Used to improve the network's ability to make accurate predictions in real-world scenarios.
 
-- An example of adversarial training is training a neural network to recognize handwritten digits by incorporating adversarial examples of slightly modified digits to the training data. 
+> An example of adversarial training is training a neural network to recognize handwritten digits by incorporating adversarial examples of slightly modified digits to the training data. 
 
 [.column]
 :black_circle:
 
 - Using **incomplete knowledge** of the model architecture, it's sources of uncertainty, it's parameters, and the training data, we can intentionally try to manipulate the input data to cause it to make incorrect predictions. **adversarial attacks**. Used to identify vulnerabilities in the network and to improve security.
 
-- An example of an adversarial attack is adding a small amount of noise to an image of a stop sign in order to make it appear as a yield sign to an autonomous vehicle's image recognition system.
+> An example of an adversarial attack is adding a small amount of noise to an image of a stop sign in order to make it appear as a go sign to an autonomous vehicle's image recognition system.
 
 ---
 
