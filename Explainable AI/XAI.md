@@ -12,14 +12,20 @@ slide-transition: true
 
 # [fit] THIS PRESENTATION IS ABOUT
 
+^ nice to see you all here! Rather than going through the slides, I would like to have a discussion about the topics. This will be a high level overview of XAI, and rather than overwhelm you with all of XAI, I would like to focus on the most important parts. If you are curious to learn more, I will be happy to share some resources with you, and you will have time and resources in Y3 and Y4 to go deeper into the topics.
+
 - taxonomy 
 - model (un)certainty
 - gradCAMs
 - the Nigerian prince.
 
+> thoughts about the presentation this morning?
+
 ---
 
 # [fit] TAXONOMY OF XAI
+
+^ There is always a trade-off between interpretability and accuracy. For example, linear models are very interpretable, but they are not very accurate. On the other hand, deep neural networks are very accurate, but they are not very interpretable. XAI is a field that tries to bridge this gap between accuracy and interpretability. Talk about taxonomy .Always pick a model depending on the task at hand. For example, if you are building a model to predict the price of a house, you should start with a linear model. If you are building a model to predict whether a patient has cancer, you should use a deep neural network and then use XAI to address the trade-off between interpretability and accuracy. 
 
 ![right filtered fit](images/txt.png)
 
@@ -37,6 +43,8 @@ slide-transition: true
 
 # [fit] TAXONOMY OF XAI
 
+^ gradCAM is a technique invented to explicity address one of the most important problems in deep learning: interpretability. It is a local, model-specific method (convolutional neural networks) to explain the predictions of a CNN.
+
 ![right fit](images/txt.png)
 
 - **by default**
@@ -53,6 +61,8 @@ slide-transition: true
 
 # [fit] MODEL (UN)CERTAINTY
 
+^ Gamblers and Astronomers — the two very distinct groups of people who were actually responsible for the origination of probability theory. The former wanted to better maximise luck (minimize risk) while the latter was trying to have accurate observations from their rudimentary tools.
+
 ![filtered](images/dice.jpeg)
 
 > “It is remarkable that science, which originated in the consideration of games of chance, should have become the most important object of human knowledge.”
@@ -61,6 +71,9 @@ slide-transition: true
 ---
 
 # [fit] MODEL (UN)CERTAINTY I
+
+^ The likelihood function can help us to quantify the uncertainty of our models. Aleatoric uncertanity or statistical uncertainty is the uncertainty that is inherent in the data. Sources of aleatoric uncertanity include measurement errors, noise, and randomness. 
+
 
 ![right filtered](images/mnisttwo.png)
 
@@ -77,6 +90,8 @@ statistical in nature, refers to random variation
 ---
 
 # [fit] MODEL (UN)CERTAINTY II
+
+^ Epistemic uncertanity or human uncertainty is the uncertainty that is inherent in the model. Uncertainity in $$\theta$$ is the source of epistemic uncertanity. Any step we take to improve the precision with which we estimate $$\theta$$ will reduce epistemic uncertanity.
 
 ![left filtered](images/mnisttwo.png)
 
@@ -96,6 +111,8 @@ human in nature, refers to ignorance
 
 # [fit] HOW IS THIS USEFUL?
 
+^ In practice, every model building exercise is an attempt towards reducing uncertainity. And remember that your model score is not always a good measure of the quality of your model.
+
 ![right fit filtered](images/mnisttwo.png)
 
 if we train a classifier on digits [0,8], what happens when we run..?
@@ -112,6 +129,8 @@ if we train a classifier on digits [0,8], what happens when we run..?
 
 # [fit] HOW IS THIS USEFUL?
 
+^ chatgpt and uncertainity. this is a nice example of how an AI developer uses UX to help the user understand the uncertainity of the model. 
+
 ![right fit](images/chatgpt.png)
 
 ## even the best models can be wrong, and with horrible consequences
@@ -122,11 +141,15 @@ if we train a classifier on digits [0,8], what happens when we run..?
 
 # [fit] :taxi:
 
+^ would you get into a self-driven taxi? Now what if I tell you that the taxi has a 50% chance of killing you? And what if I can reduce that to 10%? Would you get into the taxi then? And what if you are with your family? Would you still get into the taxi?
+
 ## `may occasionally kill passengers`
 
 ---
 
 # [fit] :musical_note: MIND YOUR STEP
+
+^ quantifying the uncertainity of deep learning models is a hot research topic. This is because statistical approaches such as confidence intervals and prediction intervals are not yet widely used in the deep learning community.
 
 ![right](https://www.youtube.com/watch?v=2HMPRXstSvQ&t=29s)
 
@@ -144,6 +167,8 @@ if we train a classifier on digits [0,8], what happens when we run..?
 ---
 
 # [fit] EXPLAINING DEEP NEURAL NETWORKS
+
+^ talk about the distinction between the 3 methods.
 
 [.column]
 
@@ -167,6 +192,8 @@ if we train a classifier on digits [0,8], what happens when we run..?
 
 # [fit] GradCAM
 
+^ brief intro to gradcam
+
 :bell: gradCAM is a feature attribution technique which visualizes the activations of a **CNN layer** by producing a heatmap that highlights the regions of an **input image** that are most relevant **to a particular output class.**
 
 - helps to understand how a CNN works
@@ -178,15 +205,23 @@ if we train a classifier on digits [0,8], what happens when we run..?
 
 # [fit] HOW DOES GRADCAM WORK?
 
+^ explain gradcam in 3 levels
+
 ![left fit](images/softmax.png)
 
-gradCAM works by computing the gradients of the output class score with respect to the feature maps of the last convolutional layer in the CNN. These gradients are then used to compute a weight map for each feature map, which are then multiplied together and summed to produce the final heatmap [^1].
+- gradCAM is a technique used in deep learning to highlight which parts of an image were important in predicting its classification. 
 
-[^1]: Molnar, C. (2020). Interpretable machine learning. Lulu. com. [website](https://christophm.github.io/interpretable-ml-book/).
+- gradCAM works by computing the gradients of the output class score with respect to the feature maps of the last convolutional layer in the CNN. 
+
+- gradCAM works by computing the gradients of the output class score with respect to the feature maps of the last convolutional layer in the CNN. These gradients are then used to compute a weight map for each feature map, which are then multiplied together and summed to produce the final heatmap [^1].
+
+[^1]: Selvaraju, R. R., Cogswell, M., Das, A., Vedantam, R., Parikh, D., & Batra, D. (2017). Grad-cam: Visual explanations from deep networks via gradient-based localization. In Proceedings of the IEEE international conference on computer vision (pp. 618-626).
 
 ---
 
 # [fit] TF_EXPLAIN
+
+^ we <3 open source. I understand things faster when I see an implementation of a method, and then I read the paper, and then back to the code. 
 
 [.column]
 [.code-highlight: all]
@@ -239,6 +274,8 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 # [fit] TF_EXPLAIN
 
+^ hides away all the abstraction and gives you a user friendly API to use the methods. 
+
 [.column]
 [.code-highlight: 1, 8-10, 26-35]
 
@@ -290,6 +327,8 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 # [fit] SOURCE CODE
 
+^ the nice thing about open source is that you can see how it works. please get into the habit of reading the source code of the libraries you use. it will help you understand how they work and how to use them. and maybe motivate you to contribute to the community yourself (bug fixes etc)
+
 ![left filtered](images/tf-explain_source.png)
 
 :computer: [https://github.com/sicara/tf-explain](https://github.com/sicara/tf-explain)
@@ -307,21 +346,26 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 # [fit] THE NIGERIAN PRINCE
 
+^ does anyone remember the nigerian prince scam?
+
 ![filtered fit](images/scam.jpg)
 
 ---
 
 # [fit] MOVING BEYOND FEATURE ATTRIBUTION
 
+^ the nigerian prince scam is a classic example of this, where the scammer intentionally introduces small perturbations in the email to fool the spam filter into predicting that the email is not spam
+
 ![left filtered ](images/scam.jpg)
 
 - deep neural networks are notoriously sensitive to small perturbations in the input
 - by intentionally introducing small perturbations in the input, we can fool the model into making a different prediction
-- the nigerian prince scam is a classic example of this, where the scammer intentionally introduces small perturbations in the email to fool the spam filter into predicting that the email is not spam
 
 ---
 
 # [fit] ADVERSARIAL TRAINING vs ADVERSARIAL ATTACKS 
+
+^ related to white hat vs black hat hacking. What is the difference?
 
 [.column]
 :white_circle:
@@ -341,11 +385,15 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 # [fit] ADVERSARIAL ATTACKS
 
+^ stop the video and raise discussion points.
+
 ![fit](https://www.youtube.com/watch?v=AOZw1tgD8dA&t=237s)
 
 ---
 
 # [fit] SUMMARY :notebook_with_decorative_cover:
+
+^ read through summary, stress that this is just the tip of the iceberg.
 
 - **XAI** is a field of research that aims to make machine learning models more interpretable and explainable
 - **linear models** are intrinsically interpretable because they are linear functions of the input features
@@ -358,8 +406,10 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 ---
 
-# [fit] YOU CAN CHOOSE TO GO DEEPER IN A TOPIC OF YOUR CHOICE
+# [fit] THANK YOU!
 
-## **THANK YOU!**
+^ If you find such material useful, please follow me on Github, I will continue to add more slides and notebooks there.
 
-[.footer: [@nbhushan](https://github.com/nbhushan)]
+![inline 50%](images/git.png)
+
+> [@nbhushan](https://github.com/nbhushan)
