@@ -44,7 +44,7 @@ slide-transition: true
     1. linear models
     2. tree-based models
 
-- **XAI**
+- **black boxes**
   - global vs local methods
   - model-specific vs model-agnostic
 
@@ -60,7 +60,7 @@ slide-transition: true
     1. linear models
     2. tree-based models
 
-- **XAI**
+- **black boxes**
   - global vs local methods
   - model-specific vs model-agnostic
 
@@ -78,7 +78,7 @@ slide-transition: true
     1. linear models
     2. tree-based models
 
-- **XAI**
+- **black boxes**
   - global vs **local** methods
   - **model-specific** vs model-agnostic
 
@@ -193,37 +193,30 @@ if we train a classifier on digits [0,8], what happens when we run..?
 
 ---
 
-# [fit] REMEMBER THE USER
+# [fit] :musical_note: MIND YOUR STEP
 
 ^ chatgpt and uncertainty. this is a nice example of how an AI developer uses UX to help the user understand the uncertainty of the model.
 
-![right fit](images/chatgpt.png)
+![right fit filtered](images/chatgpt.png)
 
 ## even the best models can be wrong, and with horrible consequences
-
----
-
-# [fit] REMEMBER THE USER
-
-^ chatgpt and uncertainty. this is a nice example of how an AI developer uses UX to help the user understand the uncertainty of the model.
-
-![right fit](images/chatgpt.png)
-
-## even the best models can be wrong, and with horrible consequences
-
-> quantify the uncertainty of your model: remember the end user!
-
----
-
-# [fit] :taxi
-
-^ would you get into a self-driven taxi? Now what if I tell you that the taxi has a 50% chance of killing you? And what if I can reduce that to 10%? Would you get into the taxi then? And what if you are with your family? Would you still get into the taxi?
-
-## `may occasionally kill passengers`
 
 ---
 
 # [fit] :musical_note: MIND YOUR STEP
+
+^ chatgpt and uncertainty. this is a nice example of how an AI developer uses UX to help the user understand the uncertainty of the model.
+
+![right fit](images/chatgpt.png)
+
+## even the best models can be wrong, and with horrible consequences
+
+> remember the end user!
+
+
+---
+
+# [fit] EMBRACE THE UNCERTAINTY
 
 ^ quantifying the uncertainty of deep learning models is a hot research topic. This is because statistical approaches such as confidence intervals and prediction intervals are not yet widely used in the deep learning community. :warning: **neural networks tend to be overconfident when being completely wrong**
 
@@ -239,9 +232,17 @@ if we train a classifier on digits [0,8], what happens when we run..?
 
 ---
 
-# [fit] :raising_hand: EXPLAINING
+# [fit] :taxi:
 
-# **DEEP NEURAL NETWORKS**
+^ would you get into a self-driven taxi? Now what if I tell you that the taxi has a 50% chance of killing you? And what if I can reduce that to 10%? Would you get into the taxi then? And what if you are with your family? Would you still get into the taxi?
+
+> `may occasionally kill passengers`
+
+---
+
+# [fit] EXPLAINING
+
+# **`DEEP NEURAL NETWORKS`**
 
 ---
 
@@ -311,31 +312,7 @@ if we train a classifier on digits [0,8], what happens when we run..?
 
 ---
 
-# [fit] GradCAM
-
-^ brief intro to gradcam
-
-:bell: gradCAM is a feature attribution technique which visualizes the activations of a **CNN layer** by producing a heatmap that highlights the regions of an **input image** that are most relevant **to a particular output class.**
-
-- helps to understand how a CNN works
-- can be used to debug a CNN
-
----
-
-# [fit] GradCAM
-
-^ brief intro to gradcam
-
-:bell: gradCAM is a feature attribution technique which visualizes the activations of a **CNN layer** by producing a heatmap that highlights the regions of an **input image** that are most relevant **to a particular output class.**
-
-- helps to understand how a CNN works
-- can be used to debug a CNN
-
-> can be used to create visual explanations for the predictions made by a CNN
-
----
-
-# [fit] HOW DOES GRADCAM WORK?
+# [fit] GRAD-CAM
 
 [.build-lists: true]
 
@@ -343,11 +320,11 @@ if we train a classifier on digits [0,8], what happens when we run..?
 
 ![left fit](images/softmax.png)
 
-- gradCAM is a technique used in deep learning to highlight which parts of an image were important in predicting its classification.
+- grad-CAM is a technique used in deep learning to highlight which parts of an image were important in predicting its classification.
 
-- gradCAM works by computing the gradients of the output class score with respect to the feature maps of the last convolutional layer in the CNN.
+- grad-CAM works by computing the gradients of the output class score with respect to the feature maps of the last convolutional layer in the CNN.
 
-- gradCAM works by computing the gradients of the output class score with respect to the feature maps of the last convolutional layer in the CNN. These gradients are then used to compute a weight map for each feature map, which are then multiplied together and summed to produce the final heatmap [^1].
+- grad-CAM works by computing the gradients of the output class score with respect to the feature maps of the last convolutional layer in the CNN. These gradients are then used to compute a weight map for each feature map, which are then multiplied together and summed to produce the final heatmap [^1].
 
 [^1]: Selvaraju, R. R., Cogswell, M., Das, A., Vedantam, R., Parikh, D., & Batra, D. (2017). Grad-cam: Visual explanations from deep networks via gradient-based localization. In Proceedings of the IEEE international conference on computer vision (pp. 618-626).
 
@@ -571,7 +548,7 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 
 ---
 
-# [fit] SUMMARY :notebook_with_decorative_cover
+# [fit] SUMMARY 
 
 [.build-lists: true]
 
@@ -582,8 +559,8 @@ explainer.save(grid, "./outputs/explain/", "grad_cam_cat.png")
 - **decision trees** are intrinsically interpretable because they are a series of if-then-else statements
 - **neural networks** are not intrinsically interpretable because they are non-linear functions of the input features. They need to be **interpreted** for high-stakes decision making applications.
 - **quantifying uncertainty** is a key component of XAI regardless of the model architecture
-- methods like **gradCAM** are useful to help us understand which parts of the input image are most important for the model to make a prediction
-- **adversarial attacks** and **adversarial training** are two different approaches to testing the reliability and robustness of machine learning models
+- methods like **grad-CAM** help us understand which parts of the input image are most important for the model to make a prediction
+- **adversarial attacks** and **adversarial training** are two sides of the same coin to testing the reliability and robustness of machine learning models
 
 ---
 
